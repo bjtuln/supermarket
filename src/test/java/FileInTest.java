@@ -29,4 +29,20 @@ public class FileInTest {
         Assert.assertEquals("ITEM000003", result);
         //Assert.assertEquals("ITEM000002", result);
     }
+
+    @Test //多数据文件-95
+    public void should_return95_ITEM00002() {
+        FileIn filein = new FileIn();
+        String result = filein.read_purinfo1_5();
+        Assert.assertEquals("ITEM000003", result);
+        //Assert.assertEquals("ITEM000002", result);
+    }
+
+    @Test //多数据文件-32
+    public void should_return32_ITEM00002() {
+        FileIn filein = new FileIn();
+        String result = filein.read_purinfo2_5();
+        Assert.assertEquals("ITEM000003", result);
+        //Assert.assertEquals("ITEM000002", result);
+    }
 }
