@@ -21,5 +21,49 @@ public class InfoTest {
         //Assert.assertEquals("ITEM000002", result);
     }
 
+    @Test //正常商品价格-ITEM00003*1
+    public void calculate_NormalInfo_should_return_5_1() {
+        purchaseInFo purchaseinfo = new purchaseInFo();
+        float result = purchaseInFo.calculate_NormalInfo_return1();
+        Assert.assertEquals("5.00", String.valueOf(result));
+
+    }
+    @Test //正常商品价格-ITEM00003*2
+    public void calculate_NormalInfo_should_return_10_2() {
+        purchaseInFo purchaseinfo = new purchaseInFo();
+        float result = purchaseInFo.calculate_NormalInfo_return2();
+        Assert.assertEquals("5.00", String.valueOf(result));
+
+    }
+    @Test //正常商品价格-ITEM00003*3
+    public void calculate_NormalInfo_should_return_15_3() {
+        purchaseInFo purchaseinfo = new purchaseInFo();
+        float result = purchaseInFo.calculate_NormalInfo_return3();
+        Assert.assertEquals("5.00", String.valueOf(result));
+
+    }
+
+    @Test //促销商品价格-ITEM00001*1
+    public void calculate_PromotionInfo_should_return_3_1() {
+        purchaseInFo purchaseinfo = new purchaseInFo();
+        float result = purchaseInFo.calculate_PromotionInfo_return1();
+        Assert.assertEquals("3.00", String.valueOf(result));
+
+    }
+    @Test //促销商品价格-ITEM00001*2
+    public void calculate_PromotionInfo_should_return_6_2() {
+        purchaseInFo purchaseinfo = new purchaseInFo();
+        float result = purchaseInFo.calculate_PromotionInfo_return2();
+        Assert.assertEquals("3.00", String.valueOf(result));
+
+    }
+    @Test //促销商品价格-ITEM00001*3
+    public void calculate_PromotionInfo_should_return_6_3() {
+        purchaseInFo purchaseinfo = new purchaseInFo();
+        float result = purchaseInFo.calculate_PromotionInfo_return3();
+        Assert.assertEquals("3.00", String.valueOf(result));
+
+    }
+
 
 }

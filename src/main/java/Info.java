@@ -91,6 +91,7 @@ class purchaseInFo{
     static int num=0;
     static float all_money=0;
     static float all_moneyCharge=0;
+    static float ltt=0;
     //计算正常商品
     public static void calculate_NormalInfo()
     {
@@ -119,10 +120,50 @@ class purchaseInFo{
                 {
                     System.out.println("名称："+str_goodInFo[1]+"，数量："+array_purchaseinfo_num.get(i)+str_goodInFo[2]+"，单价："+str_goodInFo[5]+"(元)，"+"小计："+num* Float.parseFloat(str_goodInFo[5])+"(元)。");
                     all_money+=array_purchaseinfo_num.get(i)*Float.parseFloat(str_goodInFo[5]);
+                    ltt=num* Float.parseFloat(str_goodInFo[5]);
                 }
             }
         }
     }
+
+    public static float calculate_NormalInfo_return1(){
+        ltt=0;
+        String file_GoodInfo = "test-goodInfo.txt";
+        goodInFo.read_GoodInfo(file_GoodInfo);
+        String file_GoodInfo1 = "test-promotionInfo.txt";
+        promotionInFo.read_PromotionInfo(file_GoodInfo1);
+        //购买商品信息
+        array_purchaseinfo.add("ITEM000003");
+        array_purchaseinfo_num.add(1);
+        purchaseInFo.calculate_NormalInfo();
+        return ltt;
+    }
+    public static float calculate_NormalInfo_return2(){
+        ltt=0;
+        String file_GoodInfo = "test-goodInfo.txt";
+        goodInFo.read_GoodInfo(file_GoodInfo);
+        String file_GoodInfo1 = "test-promotionInfo.txt";
+        promotionInFo.read_PromotionInfo(file_GoodInfo1);
+        //购买商品信息
+        array_purchaseinfo.add("ITEM000003");
+        array_purchaseinfo_num.add(2);
+        purchaseInFo.calculate_NormalInfo();
+        return ltt;
+    }
+    public static float calculate_NormalInfo_return3(){
+        ltt=0;
+        String file_GoodInfo = "test-goodInfo.txt";
+        goodInFo.read_GoodInfo(file_GoodInfo);
+        String file_GoodInfo1 = "test-promotionInfo.txt";
+        promotionInFo.read_PromotionInfo(file_GoodInfo1);
+        //购买商品信息
+        array_purchaseinfo.add("ITEM000003");
+        array_purchaseinfo_num.add(3);
+        purchaseInFo.calculate_NormalInfo();
+        return ltt;
+    }
+
+
     //计算促销商品
     public static void calculate_PromotionInfo()
     {
@@ -163,7 +204,42 @@ class purchaseInFo{
 
         }
     }
-
+    public static float calculate_PromotionInfo_return1(){
+        ltt=0;
+        String file_GoodInfo = "test-goodInfo.txt";
+        goodInFo.read_GoodInfo(file_GoodInfo);
+        String file_GoodInfo1 = "test-promotionInfo.txt";
+        promotionInFo.read_PromotionInfo(file_GoodInfo1);
+        //购买商品信息
+        array_purchaseinfo.add("ITEM000001");
+        array_purchaseinfo_num.add(1);
+        purchaseInFo.calculate_PromotionInfo();
+        return ltt;
+    }
+    public static float calculate_PromotionInfo_return2(){
+        ltt=0;
+        String file_GoodInfo = "test-goodInfo.txt";
+        goodInFo.read_GoodInfo(file_GoodInfo);
+        String file_GoodInfo1 = "test-promotionInfo.txt";
+        promotionInFo.read_PromotionInfo(file_GoodInfo1);
+        //购买商品信息
+        array_purchaseinfo.add("ITEM000001");
+        array_purchaseinfo_num.add(2);
+        purchaseInFo.calculate_PromotionInfo();
+        return ltt;
+    }
+    public static float calculate_PromotionInfo_return3(){
+        ltt=0;
+        String file_GoodInfo = "test-goodInfo.txt";
+        goodInFo.read_GoodInfo(file_GoodInfo);
+        String file_GoodInfo1 = "test-promotionInfo.txt";
+        promotionInFo.read_PromotionInfo(file_GoodInfo1);
+        //购买商品信息
+        array_purchaseinfo.add("ITEM000001");
+        array_purchaseinfo_num.add(3);
+        purchaseInFo.calculate_PromotionInfo();
+        return ltt;
+    }
     public static void calculate_AllInfo()
     {
         System.out.println("总计："+String.valueOf(all_money-all_moneyCharge)+"(元)。");
