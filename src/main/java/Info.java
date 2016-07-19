@@ -345,18 +345,20 @@ public class Info {
     public static void main(String[] args) {
         // TODO Auto-generated method stub
         //全部商品信息
-        String file_GoodInfo = "test-goodInfo.txt";
+        String file_GoodInfo = "./src/main/resource/test-goodInfo.txt";
+        ClassLoader.getSystemClassLoader().getResource("./test-goodInfo.txt");
+        goodInFo.class.getResource("test-goodInfo.txt");
         goodInFo.read_GoodInfo(file_GoodInfo);
         for (int i = 0; i < goodInFo.array_goodinfo.size(); i++) {
             System.out.println(goodInFo.array_goodinfo.get(i));
         }
         //优惠商品信息
-        String file_PromotionInfo = "test-promotionInfo.txt";
+        String file_PromotionInfo = "./test-promotionInfo.txt";
         promotionInFo.read_PromotionInfo(file_PromotionInfo);
         for (int i = 0; i < promotionInFo.array_promotioninfo.size(); i++) {
             System.out.println(promotionInFo.array_promotioninfo.get(i));
         }
-        ArrayList<String> dis = discountInFo.read_DiscountInfo("discountInfo.txt");
+        ArrayList<String> dis = discountInFo.read_DiscountInfo("./discountInfo.txt");
         input_purchase();
         purchaseInFo.calculate_NormalInfo();
         purchaseInFo.calculate_DiscountInfo(dis);
