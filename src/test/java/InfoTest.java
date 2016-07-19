@@ -113,6 +113,7 @@ public class InfoTest {
         purchaseInFo purchaseinfo=new purchaseInFo();
         purchaseinfo.set_Array("ITEM000000",1);
         purchaseinfo.set_Array("#", 1);
+        purchaseinfo.all_moneyCharge=0;
         float result=purchaseInFo.calculate_PromotionInfo();
         //非促销产品
         Assert.assertEquals("0.0",String.valueOf(result));
@@ -128,6 +129,7 @@ public class InfoTest {
         purchaseInFo purchaseinfo=new purchaseInFo();
         purchaseinfo.set_Array("ITEM000000",1);
         purchaseinfo.set_Array("#", 1);
+        purchaseinfo.all_moneyCharge=0;
         purchaseInFo.calculate_NormalInfo();
         purchaseInFo.calculate_PromotionInfo();
         String result=purchaseInFo.calculate_AllInfo();
@@ -160,6 +162,7 @@ public class InfoTest {
         purchaseInFo purchaseinfo=new purchaseInFo();
         purchaseinfo.set_Array("ITEM000000",3);
         purchaseinfo.set_Array("#", 1);
+        purchaseinfo.all_moneyCharge=0;
         float result=purchaseInFo.calculate_PromotionInfo();
         //促销产品
         Assert.assertEquals("3.0",String.valueOf(result));
@@ -175,6 +178,7 @@ public class InfoTest {
         purchaseInFo purchaseinfo=new purchaseInFo();
         purchaseinfo.set_Array("ITEM000000",3);
         purchaseinfo.set_Array("#", 3);
+        purchaseinfo.all_moneyCharge=0;
         purchaseInFo.calculate_NormalInfo();
         purchaseInFo.calculate_PromotionInfo();
         String result=purchaseInFo.calculate_AllInfo();
