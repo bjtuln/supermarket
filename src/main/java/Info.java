@@ -39,7 +39,7 @@ class goodInFo{
         }
     }
     public static String read_GoodInfo_return(){
-        String file_GoodInfo = "test-goodInfo.txt";
+        String file_GoodInfo = "src/main/resource/test-goodInfo.txt";
         goodInFo.read_GoodInfo(file_GoodInfo);
         String temp[]=array_goodinfo.get(3).split("\\s+");
         return temp[0];
@@ -77,7 +77,7 @@ class promotionInFo{
     }
 
     public static String read_promotionInFo_return(){
-        String file_GoodInfo = "test-promotionInfo.txt";
+        String file_GoodInfo = "src/main/resource/test-promotionInfo.txt";
         promotionInFo.read_PromotionInfo(file_GoodInfo);
         String temp[]=array_promotioninfo.get(1).split("\\s+");
         return temp[0];
@@ -128,9 +128,9 @@ class purchaseInFo{
 
     public static float calculate_NormalInfo_return1(){
         ltt=0;
-        String file_GoodInfo = "test-goodInfo.txt";
+        String file_GoodInfo = "src/main/resource/test-goodInfo.txt";
         goodInFo.read_GoodInfo(file_GoodInfo);
-        String file_GoodInfo1 = "test-promotionInfo.txt";
+        String file_GoodInfo1 = "src/main/resource/test-promotionInfo.txt";
         promotionInFo.read_PromotionInfo(file_GoodInfo1);
         //购买商品信息
         array_purchaseinfo.add("ITEM000003");
@@ -140,9 +140,9 @@ class purchaseInFo{
     }
     public static float calculate_NormalInfo_return2(){
         ltt=0;
-        String file_GoodInfo = "test-goodInfo.txt";
+        String file_GoodInfo = "src/main/resource/test-goodInfo.txt";
         goodInFo.read_GoodInfo(file_GoodInfo);
-        String file_GoodInfo1 = "test-promotionInfo.txt";
+        String file_GoodInfo1 = "src/main/resource/test-promotionInfo.txt";
         promotionInFo.read_PromotionInfo(file_GoodInfo1);
         //购买商品信息
         array_purchaseinfo.add("ITEM000003");
@@ -152,9 +152,9 @@ class purchaseInFo{
     }
     public static float calculate_NormalInfo_return3(){
         ltt=0;
-        String file_GoodInfo = "test-goodInfo.txt";
+        String file_GoodInfo = "src/main/resource/test-goodInfo.txt";
         goodInFo.read_GoodInfo(file_GoodInfo);
-        String file_GoodInfo1 = "test-promotionInfo.txt";
+        String file_GoodInfo1 = "src/main/resource/test-promotionInfo.txt";
         promotionInFo.read_PromotionInfo(file_GoodInfo1);
         //购买商品信息
         array_purchaseinfo.add("ITEM000003");
@@ -206,9 +206,9 @@ class purchaseInFo{
     }
     public static float calculate_PromotionInfo_return1(){
         ltt=0;
-        String file_GoodInfo = "test-goodInfo.txt";
+        String file_GoodInfo = "src/main/resource/test-goodInfo.txt";
         goodInFo.read_GoodInfo(file_GoodInfo);
-        String file_GoodInfo1 = "test-promotionInfo.txt";
+        String file_GoodInfo1 = "src/main/resource/test-promotionInfo.txt";
         promotionInFo.read_PromotionInfo(file_GoodInfo1);
         //购买商品信息
         array_purchaseinfo.add("ITEM000001");
@@ -218,9 +218,9 @@ class purchaseInFo{
     }
     public static float calculate_PromotionInfo_return2(){
         ltt=0;
-        String file_GoodInfo = "test-goodInfo.txt";
+        String file_GoodInfo = "src/main/resource/test-goodInfo.txt";
         goodInFo.read_GoodInfo(file_GoodInfo);
-        String file_GoodInfo1 = "test-promotionInfo.txt";
+        String file_GoodInfo1 = "src/main/resource/test-promotionInfo.txt";
         promotionInFo.read_PromotionInfo(file_GoodInfo1);
         //购买商品信息
         array_purchaseinfo.add("ITEM000001");
@@ -230,9 +230,9 @@ class purchaseInFo{
     }
     public static float calculate_PromotionInfo_return3(){
         ltt=0;
-        String file_GoodInfo = "test-goodInfo.txt";
+        String file_GoodInfo = "src/main/resource/test-goodInfo.txt";
         goodInFo.read_GoodInfo(file_GoodInfo);
-        String file_GoodInfo1 = "test-promotionInfo.txt";
+        String file_GoodInfo1 = "src/main/resource/test-promotionInfo.txt";
         promotionInFo.read_PromotionInfo(file_GoodInfo1);
         //购买商品信息
         array_purchaseinfo.add("ITEM000001");
@@ -251,13 +251,13 @@ public class Info {
     public static void main(String[] args) {
         // TODO Auto-generated method stub
         //全部商品信息
-        String file_GoodInfo = "test-goodInfo.txt";
+        String file_GoodInfo = "src/main/resource/test-goodInfo.txt";
         goodInFo.read_GoodInfo(file_GoodInfo);
         for (int i = 0; i < goodInFo.array_goodinfo.size(); i++) {
             System.out.println(goodInFo.array_goodinfo.get(i));
         }
         //优惠商品信息
-        String file_PromotionInfo = "test-promotionInfo.txt";
+        String file_PromotionInfo = "src/main/resource/test-promotionInfo.txt";
         promotionInFo.read_PromotionInfo(file_PromotionInfo);
         for (int i = 0; i < promotionInFo.array_promotioninfo.size(); i++) {
             System.out.println(promotionInFo.array_promotioninfo.get(i));
