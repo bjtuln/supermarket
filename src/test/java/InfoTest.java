@@ -169,7 +169,7 @@ public class InfoTest {
     }
 
     @Test //买三免一计算-买3个正常的可乐价钱-总价
-    public void should_return_purchaseinfo_all_price_three_9(){
+    public void should_return_purchaseinfo_all_price_three_6(){
 
         String file_GoodInfo = "src/main/resources/test-goodInfo.txt";
         goodInFo.read_GoodInfo(file_GoodInfo);
@@ -183,7 +183,7 @@ public class InfoTest {
         purchaseInFo.calculate_PromotionInfo();
         String result=purchaseInFo.calculate_AllInfo();
         //非促销产品
-        Assert.assertEquals("9.0",result);
+        Assert.assertEquals("6.0",result);
     }
 
 }

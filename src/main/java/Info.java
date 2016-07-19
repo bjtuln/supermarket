@@ -217,8 +217,8 @@ class purchaseInFo{
     }
     public static String calculate_AllInfo()
     {
-        System.out.println("总计："+String.valueOf(all_money)+"(元)。");
-        return String.valueOf(all_money);
+        System.out.println("总计："+String.valueOf(all_money-all_moneyCharge)+"(元)。");
+        return String.valueOf(all_money-all_moneyCharge);
     }
 }
 
