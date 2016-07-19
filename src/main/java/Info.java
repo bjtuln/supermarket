@@ -19,6 +19,7 @@ class goodInFo{
     public static ArrayList read_GoodInfo(String fileName) {
         File file = new File(fileName);
         BufferedReader reader = null;
+        array_goodinfo.clear();
         try {
             reader = new BufferedReader(new FileReader(file));
             String tempString = null;
@@ -51,6 +52,7 @@ class promotionInFo{
     public static ArrayList read_PromotionInfo(String fileName) {
         File file = new File(fileName);
         BufferedReader reader = null;
+        array_promotioninfo.clear();
         try {
             reader = new BufferedReader(new FileReader(file));
             String tempString = null;
@@ -81,6 +83,7 @@ class discountInFo {
     public static ArrayList<String> read_DiscountInfo(String fileName) {
         File file = new File(fileName);
         BufferedReader reader = null;
+        array_discountinfo.clear();
         try {
             reader = new BufferedReader(new FileReader(file));
             String tempString = null;
