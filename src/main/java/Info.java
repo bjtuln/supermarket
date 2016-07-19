@@ -151,7 +151,7 @@ class purchaseInFo{
 
 
     //计算促销商品
-    public static void calculate_PromotionInfo()
+    public static float calculate_PromotionInfo()
     {
         boolean flag=true;
         //标记要不要输出买三免一
@@ -189,6 +189,7 @@ class purchaseInFo{
             }
 
         }
+        return all_moneyCharge;
     }
     //计算95折
     public static float calculate_DiscountInfo(ArrayList<String> dis){
@@ -211,9 +212,10 @@ class purchaseInFo{
         }
         return discount_sum;
     }
-    public static void calculate_AllInfo()
+    public static String calculate_AllInfo()
     {
         System.out.println("总计："+String.valueOf(all_money-all_moneyCharge)+"(元)。");
+        return String.valueOf(all_money-all_moneyCharge);
     }
 }
 
@@ -262,18 +264,18 @@ public class Info {
     public static void main(String[] args) {
         // TODO Auto-generated method stub
         //全部商品信息
-        String file_GoodInfo = "src/main/resource/test-goodInfo.txt";
+        String file_GoodInfo = "src/main/resources/test-goodInfo.txt";
         goodInFo.read_GoodInfo(file_GoodInfo);
         for (int i = 0; i < goodInFo.array_goodinfo.size(); i++) {
             System.out.println(goodInFo.array_goodinfo.get(i));
         }
         //优惠商品信息
-        String file_PromotionInfo = "src/main/resource/test-promotionInfo.txt";
+        String file_PromotionInfo = "src/main/resources/test-promotionInfo.txt";
         promotionInFo.read_PromotionInfo(file_PromotionInfo);
         for (int i = 0; i < promotionInFo.array_promotioninfo.size(); i++) {
             System.out.println(promotionInFo.array_promotioninfo.get(i));
         }
-        ArrayList<String> dis = discountInFo.read_DiscountInfo("src/main/resource/discountInfo.txt");
+        ArrayList<String> dis = discountInFo.read_DiscountInfo("src/main/resources/discountInfo.txt");
         input_purchase();
         purchaseInFo.calculate_NormalInfo();
         purchaseInFo.calculate_DiscountInfo(dis);
