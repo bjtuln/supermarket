@@ -1,6 +1,8 @@
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 /**
  * Created by Administrator on 2016/7/18.
  */
@@ -63,6 +65,21 @@ public class InfoTest {
         float result = purchaseInFo.calculate_PromotionInfo_return3();
         Assert.assertEquals("3.00", String.valueOf(result));
 
+    }
+    @Test
+    public void calculate_DiscountInfo_should_return_4(){
+        purchaseInFo purchaseinfo = new purchaseInFo();
+        goodInFo goodInFo = new goodInFo();
+        String file_GoodInfo = "test-goodInfo.txt";
+        goodInFo.read_GoodInfo(file_GoodInfo);
+        String file_PromotionInfo = "discountInfo.txt";
+        ArrayList<String> dis = discountInFo.read_DiscountInfo("discountInfo.txt");
+        purchaseInFo purchaseInFo = new purchaseInFo();
+        purchaseInFo.set_Array("ITEM000006", 10);
+        purchaseInFo.set_Array("#", 10);
+        float result = purchaseInFo.calculate_DiscountInfo(dis);
+        System.out.print(result);
+        Assert.assertEquals("4.0", String.valueOf(result));
     }
 
 
