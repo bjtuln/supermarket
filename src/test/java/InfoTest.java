@@ -41,6 +41,21 @@ public class InfoTest {
 
         Assert.assertEquals("ITEM000001", result[0]);
     }
+    @Test//95折商品
+    public void calculate_DiscountInfo_should_return_4(){
+        purchaseInFo purchaseinfo = new purchaseInFo();
+        goodInFo goodInFo = new goodInFo();
+        String file_GoodInfo = "src/main/resource/test-goodInfo.txt";
+        goodInFo.read_GoodInfo(file_GoodInfo);
+        //String file_PromotionInfo = "discountInfo.txt";
+        ArrayList<String> dis = discountInFo.read_DiscountInfo("src/main/resource/discountInfo.txt");
+        purchaseInFo purchaseInFo = new purchaseInFo();
+        purchaseInFo.set_Array("ITEM000006", 10);
+        purchaseInFo.set_Array("#", 10);
+        float result = purchaseInFo.calculate_DiscountInfo(dis);
+        System.out.print(result);
+        Assert.assertEquals("4.0", String.valueOf(result));
+    }
 
     @Test //买三免一计算-单独买一个正常的可乐项目
     public void should_return_purchaseinfo_firstitem(){
