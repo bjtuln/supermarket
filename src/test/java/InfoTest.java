@@ -45,10 +45,10 @@ public class InfoTest {
     public void calculate_DiscountInfo_should_return_4(){
         purchaseInFo purchaseinfo = new purchaseInFo();
         goodInFo goodInFo = new goodInFo();
-        String file_GoodInfo = "src/main/resource/test-goodInfo.txt";
+        String file_GoodInfo = "src/main/resources/test-goodInfo.txt";
         goodInFo.read_GoodInfo(file_GoodInfo);
         //String file_PromotionInfo = "discountInfo.txt";
-        ArrayList<String> dis = discountInFo.read_DiscountInfo("src/main/resource/discountInfo.txt");
+        ArrayList<String> dis = discountInFo.read_DiscountInfo("src/main/resources/discountInfo.txt");
         purchaseInFo purchaseInFo = new purchaseInFo();
         purchaseInFo.set_Array("ITEM000006", 10);
         purchaseInFo.set_Array("#", 10);
