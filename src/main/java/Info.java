@@ -16,7 +16,7 @@ class goodInFo{
     /**
      * 以行为单位读取商品信息文件存储在array_goodinfo
      */
-    public static void read_GoodInfo(String fileName) {
+    public static ArrayList read_GoodInfo(String fileName) {
         File file = new File(fileName);
         BufferedReader reader = null;
         try {
@@ -37,12 +37,7 @@ class goodInFo{
                 }
             }
         }
-    }
-    public static String read_GoodInfo_return(){
-        String file_GoodInfo = "test-goodInfo.txt";
-        goodInFo.read_GoodInfo(file_GoodInfo);
-        String temp[]=array_goodinfo.get(3).split("\\s+");
-        return temp[0];
+        return array_goodinfo;
     }
 
 }
@@ -53,7 +48,7 @@ class promotionInFo{
     /**
      * 以行为单位读取商品信息文件存储在array_goodinfo
      */
-    public static void read_PromotionInfo(String fileName) {
+    public static ArrayList read_PromotionInfo(String fileName) {
         File file = new File(fileName);
         BufferedReader reader = null;
         try {
@@ -74,13 +69,7 @@ class promotionInFo{
                 }
             }
         }
-    }
-
-    public static String read_promotionInFo_return(){
-        String file_GoodInfo = "test-promotionInfo.txt";
-        promotionInFo.read_PromotionInfo(file_GoodInfo);
-        String temp[]=array_promotioninfo.get(1).split("\\s+");
-        return temp[0];
+        return array_promotioninfo;
     }
 }
 class discountInFo {
@@ -126,7 +115,7 @@ class purchaseInFo{
         array_purchaseinfo_num.add(b);
     }
     //计算正常商品
-    public static void calculate_NormalInfo()
+    public static float calculate_NormalInfo()
     {
         System.out.println("*<没钱赚商店>购物清单*");
 
@@ -157,42 +146,6 @@ class purchaseInFo{
                 }
             }
         }
-    }
-
-    public static float calculate_NormalInfo_return1(){
-        ltt=0;
-        String file_GoodInfo = "test-goodInfo.txt";
-        goodInFo.read_GoodInfo(file_GoodInfo);
-        String file_GoodInfo1 = "test-promotionInfo.txt";
-        promotionInFo.read_PromotionInfo(file_GoodInfo1);
-        //购买商品信息
-        array_purchaseinfo.add("ITEM000003");
-        array_purchaseinfo_num.add(1);
-        purchaseInFo.calculate_NormalInfo();
-        return ltt;
-    }
-    public static float calculate_NormalInfo_return2(){
-        ltt=0;
-        String file_GoodInfo = "test-goodInfo.txt";
-        goodInFo.read_GoodInfo(file_GoodInfo);
-        String file_GoodInfo1 = "test-promotionInfo.txt";
-        promotionInFo.read_PromotionInfo(file_GoodInfo1);
-        //购买商品信息
-        array_purchaseinfo.add("ITEM000003");
-        array_purchaseinfo_num.add(2);
-        purchaseInFo.calculate_NormalInfo();
-        return ltt;
-    }
-    public static float calculate_NormalInfo_return3(){
-        ltt=0;
-        String file_GoodInfo = "test-goodInfo.txt";
-        goodInFo.read_GoodInfo(file_GoodInfo);
-        String file_GoodInfo1 = "test-promotionInfo.txt";
-        promotionInFo.read_PromotionInfo(file_GoodInfo1);
-        //购买商品信息
-        array_purchaseinfo.add("ITEM000003");
-        array_purchaseinfo_num.add(3);
-        purchaseInFo.calculate_NormalInfo();
         return ltt;
     }
 
@@ -236,42 +189,6 @@ class purchaseInFo{
             }
 
         }
-    }
-    public static float calculate_PromotionInfo_return1(){
-        ltt=0;
-        String file_GoodInfo = "test-goodInfo.txt";
-        goodInFo.read_GoodInfo(file_GoodInfo);
-        String file_GoodInfo1 = "test-promotionInfo.txt";
-        promotionInFo.read_PromotionInfo(file_GoodInfo1);
-        //购买商品信息
-        array_purchaseinfo.add("ITEM000001");
-        array_purchaseinfo_num.add(1);
-        purchaseInFo.calculate_PromotionInfo();
-        return ltt;
-    }
-    public static float calculate_PromotionInfo_return2(){
-        ltt=0;
-        String file_GoodInfo = "test-goodInfo.txt";
-        goodInFo.read_GoodInfo(file_GoodInfo);
-        String file_GoodInfo1 = "test-promotionInfo.txt";
-        promotionInFo.read_PromotionInfo(file_GoodInfo1);
-        //购买商品信息
-        array_purchaseinfo.add("ITEM000001");
-        array_purchaseinfo_num.add(2);
-        purchaseInFo.calculate_PromotionInfo();
-        return ltt;
-    }
-    public static float calculate_PromotionInfo_return3(){
-        ltt=0;
-        String file_GoodInfo = "test-goodInfo.txt";
-        goodInFo.read_GoodInfo(file_GoodInfo);
-        String file_GoodInfo1 = "test-promotionInfo.txt";
-        promotionInFo.read_PromotionInfo(file_GoodInfo1);
-        //购买商品信息
-        array_purchaseinfo.add("ITEM000001");
-        array_purchaseinfo_num.add(3);
-        purchaseInFo.calculate_PromotionInfo();
-        return ltt;
     }
     //计算95折
     public static float calculate_DiscountInfo(ArrayList<String> dis){
@@ -345,18 +262,18 @@ public class Info {
     public static void main(String[] args) {
         // TODO Auto-generated method stub
         //全部商品信息
-        String file_GoodInfo = "test-goodInfo.txt";
+        String file_GoodInfo = "src/main/resource/test-goodInfo.txt";
         goodInFo.read_GoodInfo(file_GoodInfo);
         for (int i = 0; i < goodInFo.array_goodinfo.size(); i++) {
             System.out.println(goodInFo.array_goodinfo.get(i));
         }
         //优惠商品信息
-        String file_PromotionInfo = "test-promotionInfo.txt";
+        String file_PromotionInfo = "src/main/resource/test-promotionInfo.txt";
         promotionInFo.read_PromotionInfo(file_PromotionInfo);
         for (int i = 0; i < promotionInFo.array_promotioninfo.size(); i++) {
             System.out.println(promotionInFo.array_promotioninfo.get(i));
         }
-        ArrayList<String> dis = discountInFo.read_DiscountInfo("discountInfo.txt");
+        ArrayList<String> dis = discountInFo.read_DiscountInfo("src/main/resource/discountInfo.txt");
         input_purchase();
         purchaseInFo.calculate_NormalInfo();
         purchaseInFo.calculate_DiscountInfo(dis);
