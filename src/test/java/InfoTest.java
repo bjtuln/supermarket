@@ -65,6 +65,8 @@ public class InfoTest {
         String file_PromotionInfo = "src/main/resources/test-promotionInfo.txt";
         promotionInFo.read_PromotionInfo(file_PromotionInfo);
         purchaseInFo purchaseinfo=new purchaseInFo();
+        purchaseInFo.array_purchaseinfo.clear();
+        purchaseInFo.array_purchaseinfo_num.clear();
         purchaseinfo.set_Array("ITEM000000",1);
         //float result=purchaseInFo.calculate_NormalInfo();
         //result为0并没有得到计算
@@ -81,6 +83,8 @@ public class InfoTest {
         String file_PromotionInfo = "src/main/resources/test-promotionInfo.txt";
         promotionInFo.read_PromotionInfo(file_PromotionInfo);
         purchaseInFo purchaseinfo=new purchaseInFo();
+        purchaseInFo.array_purchaseinfo.clear();
+        purchaseInFo.array_purchaseinfo_num.clear();
         purchaseinfo.set_Array("ITEM000000",1);
         //float result=purchaseInFo.calculate_NormalInfo();
         //result为0并没有得到计算
@@ -96,6 +100,8 @@ public class InfoTest {
         String file_PromotionInfo = "src/main/resources/test-promotionInfo.txt";
         promotionInFo.read_PromotionInfo(file_PromotionInfo);
         purchaseInFo purchaseinfo=new purchaseInFo();
+        purchaseInFo.array_purchaseinfo.clear();
+        purchaseInFo.array_purchaseinfo_num.clear();
         purchaseinfo.set_Array("ITEM000000",1);
         purchaseinfo.set_Array("#", 1);
         float result=purchaseInFo.calculate_NormalInfo();
@@ -111,6 +117,8 @@ public class InfoTest {
         String file_PromotionInfo = "src/main/resources/test-promotionInfo.txt";
         promotionInFo.read_PromotionInfo(file_PromotionInfo);
         purchaseInFo purchaseinfo=new purchaseInFo();
+        purchaseInFo.array_purchaseinfo.clear();
+        purchaseInFo.array_purchaseinfo_num.clear();
         purchaseinfo.set_Array("ITEM000000",1);
         purchaseinfo.set_Array("#", 1);
         purchaseinfo.all_moneyCharge=0;
@@ -127,9 +135,12 @@ public class InfoTest {
         String file_PromotionInfo = "src/main/resources/test-promotionInfo.txt";
         promotionInFo.read_PromotionInfo(file_PromotionInfo);
         purchaseInFo purchaseinfo=new purchaseInFo();
+        purchaseInFo.array_purchaseinfo.clear();
+        purchaseInFo.array_purchaseinfo_num.clear();
         purchaseinfo.set_Array("ITEM000000",1);
         purchaseinfo.set_Array("#", 1);
-        purchaseinfo.all_moneyCharge=0;
+        purchaseInFo.all_moneyCharge=0;
+        purchaseInFo.all_money=0;
         purchaseInFo.calculate_NormalInfo();
         purchaseInFo.calculate_PromotionInfo();
         String result=purchaseInFo.calculate_AllInfo();
@@ -145,6 +156,8 @@ public class InfoTest {
         String file_PromotionInfo = "src/main/resources/test-promotionInfo.txt";
         promotionInFo.read_PromotionInfo(file_PromotionInfo);
         purchaseInFo purchaseinfo=new purchaseInFo();
+        purchaseInFo.array_purchaseinfo.clear();
+        purchaseInFo.array_purchaseinfo_num.clear();
         purchaseinfo.set_Array("ITEM000000",3);
         purchaseinfo.set_Array("#", 1);
         float result=purchaseInFo.calculate_NormalInfo();
@@ -160,6 +173,8 @@ public class InfoTest {
         String file_PromotionInfo = "src/main/resources/test-promotionInfo.txt";
         promotionInFo.read_PromotionInfo(file_PromotionInfo);
         purchaseInFo purchaseinfo=new purchaseInFo();
+        purchaseInFo.array_purchaseinfo.clear();
+        purchaseInFo.array_purchaseinfo_num.clear();
         purchaseinfo.set_Array("ITEM000000",3);
         purchaseinfo.set_Array("#", 1);
         purchaseinfo.all_moneyCharge=0;
@@ -176,9 +191,12 @@ public class InfoTest {
         String file_PromotionInfo = "src/main/resources/test-promotionInfo.txt";
         promotionInFo.read_PromotionInfo(file_PromotionInfo);
         purchaseInFo purchaseinfo=new purchaseInFo();
+        purchaseInFo.array_purchaseinfo.clear();
+        purchaseInFo.array_purchaseinfo_num.clear();
         purchaseinfo.set_Array("ITEM000000",3);
         purchaseinfo.set_Array("#", 3);
-        purchaseinfo.all_moneyCharge=0;
+        purchaseInFo.all_moneyCharge=0;
+        purchaseInFo.all_money=0;
         purchaseInFo.calculate_NormalInfo();
         purchaseInFo.calculate_PromotionInfo();
         String result=purchaseInFo.calculate_AllInfo();
