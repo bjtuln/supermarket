@@ -10,7 +10,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 
-class goodInFo{
+class GoodInFo {
     //存储商品信息
     static ArrayList<String> array_goodinfo=new ArrayList<String>();
     /**
@@ -43,7 +43,7 @@ class goodInFo{
 
 }
 
-class promotionInFo{
+class PromotionInFo {
     //存储优惠商品信息(买三免一)
     static ArrayList<String> array_promotioninfo=new ArrayList<String>();
     /**
@@ -74,7 +74,7 @@ class promotionInFo{
         return array_promotioninfo;
     }
 }
-class discountInFo {
+class DiscountInFo {
     //95折商品
     static ArrayList<String> array_discountinfo = new ArrayList<String>();
     /**
@@ -105,7 +105,7 @@ class discountInFo {
         return array_discountinfo;
     }
 }
-class purchaseInFo{
+class PurchaseInFo {
     static ArrayList<String> array_purchaseinfo=new ArrayList<String>();
     static ArrayList<Integer> array_purchaseinfo_num=new ArrayList<Integer>();
     static String[] str_goodInFo=new String[6];
@@ -127,15 +127,15 @@ class purchaseInFo{
         {
             boolean ifpurchase=false;
             int num=0;
-            for(int j=0;j<promotionInFo.array_promotioninfo.size();j++)
+            for(int j = 0; j< PromotionInFo.array_promotioninfo.size(); j++)
             {
                 //如果是促销商品
-                if(array_purchaseinfo.get(i).trim().equals(promotionInFo.array_promotioninfo.get(j).trim()))
+                if(array_purchaseinfo.get(i).trim().equals(PromotionInFo.array_promotioninfo.get(j).trim()))
                     ifpurchase=true;
             }
-            for(int k=0;k<goodInFo.array_goodinfo.size();k++)
+            for(int k = 0; k< GoodInFo.array_goodinfo.size(); k++)
             {
-                str_goodInFo=goodInFo.array_goodinfo.get(k).split("\\s+",6);
+                str_goodInFo= GoodInFo.array_goodinfo.get(k).split("\\s+",6);
                 if(ifpurchase)
                     num=array_purchaseinfo_num.get(i)-array_purchaseinfo_num.get(i)/3;
                 else {
@@ -163,19 +163,19 @@ class purchaseInFo{
         for(int i=0;i<array_purchaseinfo.size()-1;i++)
         {
             //如果是促销产品的计算
-            for(int j=0;j<promotionInFo.array_promotioninfo.size();j++)
+            for(int j = 0; j< PromotionInFo.array_promotioninfo.size(); j++)
             {
-                if(array_purchaseinfo.get(i).trim().equals(promotionInFo.array_promotioninfo.get(j).trim()))
+                if(array_purchaseinfo.get(i).trim().equals(PromotionInFo.array_promotioninfo.get(j).trim()))
                 {
                     if(flag)
                     {
                         System.out.println("买三免一商品");
                         flag=false;
                     }
-                    for(int k=0;k<goodInFo.array_goodinfo.size();k++)
+                    for(int k = 0; k< GoodInFo.array_goodinfo.size(); k++)
                     {
                         //得到字符串的第一个空格
-                        str_goodInFo=goodInFo.array_goodinfo.get(k).split("\\s+",6);
+                        str_goodInFo= GoodInFo.array_goodinfo.get(k).split("\\s+",6);
                         if(array_purchaseinfo.get(i).equals(str_goodInFo[0]))
                         {
                             //输出后面的信息
@@ -203,8 +203,8 @@ class purchaseInFo{
             //如果是95折产品的计算
             for(int j=0;j<dis.size();j++) {
                 if (array_purchaseinfo.get(i).trim().equals(dis.get(j).trim())) {
-                    for(int k=0;k<goodInFo.array_goodinfo.size();k++) {
-                        str_goodInFo = goodInFo.array_goodinfo.get(k).split("\\s+", 6);
+                    for(int k = 0; k< GoodInFo.array_goodinfo.size(); k++) {
+                        str_goodInFo = GoodInFo.array_goodinfo.get(k).split("\\s+", 6);
                         if (array_purchaseinfo.get(i).equals(str_goodInFo[0])) {
                             System.out.println("名称：" + str_goodInFo[1] + "，数量：" + array_purchaseinfo_num.get(i) + str_goodInFo[2] + "，单价：" + str_goodInFo[5] + "(元)，" + "小计：" + num * Float.parseFloat(str_goodInFo[5]) * 0.95 + "(元)，" + "节省：" + num * Float.parseFloat(str_goodInFo[5]) * 0.05 + "(元)");
                             discount_sum += num * Float.parseFloat(str_goodInFo[5]) * 0.05;
@@ -242,20 +242,20 @@ public class Info {
                     str_purchaseinfo=split_purchaseinfo[0];
                     count=Integer.parseInt(split_purchaseinfo[1]);
                 }
-                if(purchaseInFo.array_purchaseinfo.contains(str_purchaseinfo))
+                if(PurchaseInFo.array_purchaseinfo.contains(str_purchaseinfo))
                 {
-                    for(int i = 0;i < purchaseInFo.array_purchaseinfo_num.size(); i++){
-                        if(purchaseInFo.array_purchaseinfo.get(i).equals(str_purchaseinfo))
+                    for(int i = 0; i < PurchaseInFo.array_purchaseinfo_num.size(); i++){
+                        if(PurchaseInFo.array_purchaseinfo.get(i).equals(str_purchaseinfo))
                         {
-                            all_num=purchaseInFo.array_purchaseinfo_num.get(i);
+                            all_num= PurchaseInFo.array_purchaseinfo_num.get(i);
                         }
                     }//返回位置的内容
-                    purchaseInFo.array_purchaseinfo_num.set(purchaseInFo.array_purchaseinfo.indexOf(str_purchaseinfo), ++all_num);
+                    PurchaseInFo.array_purchaseinfo_num.set(PurchaseInFo.array_purchaseinfo.indexOf(str_purchaseinfo), ++all_num);
                 }
                 else {
                     //否则不包含，插入，修改num值为1
-                    purchaseInFo.array_purchaseinfo.add(str_purchaseinfo);
-                    purchaseInFo.array_purchaseinfo_num.add(count);
+                    PurchaseInFo.array_purchaseinfo.add(str_purchaseinfo);
+                    PurchaseInFo.array_purchaseinfo_num.add(count);
 
                 }
             } while (!str_purchaseinfo.equals("#"));//最后一个商品为"#"
@@ -268,22 +268,22 @@ public class Info {
         // TODO Auto-generated method stub
         //全部商品信息
         String file_GoodInfo = "src/main/resources/test-goodInfo.txt";
-        goodInFo.read_GoodInfo(file_GoodInfo);
-        for (int i = 0; i < goodInFo.array_goodinfo.size(); i++) {
-            System.out.println(goodInFo.array_goodinfo.get(i));
+        GoodInFo.read_GoodInfo(file_GoodInfo);
+        for (int i = 0; i < GoodInFo.array_goodinfo.size(); i++) {
+            System.out.println(GoodInFo.array_goodinfo.get(i));
         }
         //优惠商品信息
         String file_PromotionInfo = "src/main/resources/test-promotionInfo.txt";
-        promotionInFo.read_PromotionInfo(file_PromotionInfo);
-        for (int i = 0; i < promotionInFo.array_promotioninfo.size(); i++) {
-            System.out.println(promotionInFo.array_promotioninfo.get(i));
+        PromotionInFo.read_PromotionInfo(file_PromotionInfo);
+        for (int i = 0; i < PromotionInFo.array_promotioninfo.size(); i++) {
+            System.out.println(PromotionInFo.array_promotioninfo.get(i));
         }
-        ArrayList<String> dis = discountInFo.read_DiscountInfo("src/main/resources/discountInfo.txt");
+        ArrayList<String> dis = DiscountInFo.read_DiscountInfo("src/main/resources/discountInfo.txt");
         input_purchase();
-        purchaseInFo.calculate_NormalInfo();
-        purchaseInFo.calculate_DiscountInfo(dis);
-        purchaseInFo.calculate_PromotionInfo();
-        purchaseInFo.calculate_AllInfo();
+        PurchaseInFo.calculate_NormalInfo();
+        PurchaseInFo.calculate_DiscountInfo(dis);
+        PurchaseInFo.calculate_PromotionInfo();
+        PurchaseInFo.calculate_AllInfo();
 
     }
 

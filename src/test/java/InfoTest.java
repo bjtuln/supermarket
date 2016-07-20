@@ -14,7 +14,7 @@ public class InfoTest {
         Info info = new Info();
         String file_GoodInfo = "src/main/resources/test-goodInfo.txt";
         ArrayList<String> arraylist;
-        arraylist = goodInFo.read_GoodInfo(file_GoodInfo);
+        arraylist = GoodInFo.read_GoodInfo(file_GoodInfo);
         String result[]=arraylist.get(1).split("\\s+");
         //第一行读取奇怪的点，从第二行开始是实际用的数据
         Assert.assertEquals("ITEM000000", result[0]);
@@ -25,7 +25,7 @@ public class InfoTest {
         Info info = new Info();
         String file_GoodInfo = "src/main/resources/test-goodInfo.txt";
         ArrayList<String> arraylist;
-        arraylist = goodInFo.read_GoodInfo(file_GoodInfo);
+        arraylist = GoodInFo.read_GoodInfo(file_GoodInfo);
         String result[]=arraylist.get(5).split("\\s+");
 
         Assert.assertEquals("ITEM000004", result[0]);
@@ -36,23 +36,23 @@ public class InfoTest {
         Info info = new Info();
         String file_promotionInfo = "src/main/resources/test-promotionInfo.txt";
         ArrayList<String> arraylist;
-        arraylist = promotionInFo.read_PromotionInfo(file_promotionInfo);
+        arraylist = PromotionInFo.read_PromotionInfo(file_promotionInfo);
         String result[]=arraylist.get(1).split("\\s+");
 
         Assert.assertEquals("ITEM000001", result[0]);
     }
     @Test//95折商品
     public void calculate_DiscountInfo_should_return_4(){
-        purchaseInFo purchaseinfo = new purchaseInFo();
-        goodInFo goodInFo = new goodInFo();
+        PurchaseInFo purchaseinfo = new PurchaseInFo();
+        GoodInFo goodInFo = new GoodInFo();
         String file_GoodInfo = "src/main/resources/test-goodInfo.txt";
         goodInFo.read_GoodInfo(file_GoodInfo);
         //String file_PromotionInfo = "discountInfo.txt";
-        ArrayList<String> dis = discountInFo.read_DiscountInfo("src/main/resources/discountInfo.txt");
-        purchaseInFo purchaseInFo = new purchaseInFo();
-        purchaseInFo.set_Array("ITEM000006", 10);
-        purchaseInFo.set_Array("#", 10);
-        float result = purchaseInFo.calculate_DiscountInfo(dis);
+        ArrayList<String> dis = DiscountInFo.read_DiscountInfo("src/main/resources/discountInfo.txt");
+        PurchaseInFo PurchaseInFo = new PurchaseInFo();
+        PurchaseInFo.set_Array("ITEM000006", 10);
+        PurchaseInFo.set_Array("#", 10);
+        float result = PurchaseInFo.calculate_DiscountInfo(dis);
         System.out.print(result);
         Assert.assertEquals("4.0", String.valueOf(result));
     }
@@ -61,17 +61,17 @@ public class InfoTest {
     public void should_return_purchaseinfo_firstitem(){
 
         String file_GoodInfo = "src/main/resources/test-goodInfo.txt";
-        goodInFo.read_GoodInfo(file_GoodInfo);
+        GoodInFo.read_GoodInfo(file_GoodInfo);
         String file_PromotionInfo = "src/main/resources/test-promotionInfo.txt";
-        promotionInFo.read_PromotionInfo(file_PromotionInfo);
-        purchaseInFo purchaseinfo=new purchaseInFo();
-        purchaseInFo.array_purchaseinfo.clear();
-        purchaseInFo.array_purchaseinfo_num.clear();
+        PromotionInFo.read_PromotionInfo(file_PromotionInfo);
+        PurchaseInFo purchaseinfo=new PurchaseInFo();
+        PurchaseInFo.array_purchaseinfo.clear();
+        PurchaseInFo.array_purchaseinfo_num.clear();
         purchaseinfo.set_Array("ITEM000000",1);
-        //float result=purchaseInFo.calculate_NormalInfo();
+        //float result=PurchaseInFo.calculate_NormalInfo();
         //result为0并没有得到计算
         //Assert.assertEquals("3.00", result);
-        String result=purchaseInFo.array_purchaseinfo.get(0);
+        String result= PurchaseInFo.array_purchaseinfo.get(0);
         Assert.assertEquals("ITEM000000", result);
     }
 
@@ -79,32 +79,32 @@ public class InfoTest {
     public void should_return_purchaseinfo_firstnum(){
 
         String file_GoodInfo = "src/main/resources/test-goodInfo.txt";
-        goodInFo.read_GoodInfo(file_GoodInfo);
+        GoodInFo.read_GoodInfo(file_GoodInfo);
         String file_PromotionInfo = "src/main/resources/test-promotionInfo.txt";
-        promotionInFo.read_PromotionInfo(file_PromotionInfo);
-        purchaseInFo purchaseinfo=new purchaseInFo();
-        purchaseInFo.array_purchaseinfo.clear();
-        purchaseInFo.array_purchaseinfo_num.clear();
+        PromotionInFo.read_PromotionInfo(file_PromotionInfo);
+        PurchaseInFo purchaseinfo=new PurchaseInFo();
+        PurchaseInFo.array_purchaseinfo.clear();
+        PurchaseInFo.array_purchaseinfo_num.clear();
         purchaseinfo.set_Array("ITEM000000",1);
-        //float result=purchaseInFo.calculate_NormalInfo();
+        //float result=PurchaseInFo.calculate_NormalInfo();
         //result为0并没有得到计算
         //Assert.assertEquals("3.00", result);
-        int result=purchaseInFo.array_purchaseinfo_num.get(0);
+        int result= PurchaseInFo.array_purchaseinfo_num.get(0);
         Assert.assertEquals(1, result);
     }
     @Test //买三免一计算-单独买一个正常的可乐价钱-普通
     public void should_return_purchaseinfo_com_price_one_3(){
 
         String file_GoodInfo = "src/main/resources/test-goodInfo.txt";
-        goodInFo.read_GoodInfo(file_GoodInfo);
+        GoodInFo.read_GoodInfo(file_GoodInfo);
         String file_PromotionInfo = "src/main/resources/test-promotionInfo.txt";
-        promotionInFo.read_PromotionInfo(file_PromotionInfo);
-        purchaseInFo purchaseinfo=new purchaseInFo();
-        purchaseInFo.array_purchaseinfo.clear();
-        purchaseInFo.array_purchaseinfo_num.clear();
+        PromotionInFo.read_PromotionInfo(file_PromotionInfo);
+        PurchaseInFo purchaseinfo=new PurchaseInFo();
+        PurchaseInFo.array_purchaseinfo.clear();
+        PurchaseInFo.array_purchaseinfo_num.clear();
         purchaseinfo.set_Array("ITEM000000",1);
         purchaseinfo.set_Array("#", 1);
-        float result=purchaseInFo.calculate_NormalInfo();
+        float result= PurchaseInFo.calculate_NormalInfo();
         //如何保证控制格式
         Assert.assertEquals("3.0",String.valueOf(result));
     }
@@ -113,16 +113,16 @@ public class InfoTest {
     public void should_return_purchaseinfo_pro_price_one_0(){
 
         String file_GoodInfo = "src/main/resources/test-goodInfo.txt";
-        goodInFo.read_GoodInfo(file_GoodInfo);
+        GoodInFo.read_GoodInfo(file_GoodInfo);
         String file_PromotionInfo = "src/main/resources/test-promotionInfo.txt";
-        promotionInFo.read_PromotionInfo(file_PromotionInfo);
-        purchaseInFo purchaseinfo=new purchaseInFo();
-        purchaseInFo.array_purchaseinfo.clear();
-        purchaseInFo.array_purchaseinfo_num.clear();
+        PromotionInFo.read_PromotionInfo(file_PromotionInfo);
+        PurchaseInFo purchaseinfo=new PurchaseInFo();
+        PurchaseInFo.array_purchaseinfo.clear();
+        PurchaseInFo.array_purchaseinfo_num.clear();
         purchaseinfo.set_Array("ITEM000000",1);
         purchaseinfo.set_Array("#", 1);
         purchaseinfo.all_moneyCharge=0;
-        float result=purchaseInFo.calculate_PromotionInfo();
+        float result= PurchaseInFo.calculate_PromotionInfo();
         //非促销产品
         Assert.assertEquals("0.0",String.valueOf(result));
     }
@@ -131,19 +131,19 @@ public class InfoTest {
     public void should_return_purchaseinfo_all_price_one_3(){
 
         String file_GoodInfo = "src/main/resources/test-goodInfo.txt";
-        goodInFo.read_GoodInfo(file_GoodInfo);
+        GoodInFo.read_GoodInfo(file_GoodInfo);
         String file_PromotionInfo = "src/main/resources/test-promotionInfo.txt";
-        promotionInFo.read_PromotionInfo(file_PromotionInfo);
-        purchaseInFo purchaseinfo=new purchaseInFo();
-        purchaseInFo.array_purchaseinfo.clear();
-        purchaseInFo.array_purchaseinfo_num.clear();
+        PromotionInFo.read_PromotionInfo(file_PromotionInfo);
+        PurchaseInFo purchaseinfo=new PurchaseInFo();
+        PurchaseInFo.array_purchaseinfo.clear();
+        PurchaseInFo.array_purchaseinfo_num.clear();
         purchaseinfo.set_Array("ITEM000000",1);
         purchaseinfo.set_Array("#", 1);
-        purchaseInFo.all_moneyCharge=0;
-        purchaseInFo.all_money=0;
-        purchaseInFo.calculate_NormalInfo();
-        purchaseInFo.calculate_PromotionInfo();
-        String result=purchaseInFo.calculate_AllInfo();
+        PurchaseInFo.all_moneyCharge=0;
+        PurchaseInFo.all_money=0;
+        PurchaseInFo.calculate_NormalInfo();
+        PurchaseInFo.calculate_PromotionInfo();
+        String result= PurchaseInFo.calculate_AllInfo();
         //非促销产品
         Assert.assertEquals("3.0",result);
     }
@@ -152,15 +152,15 @@ public class InfoTest {
     public void should_return_purchaseinfo_com_price_three_6(){
 
         String file_GoodInfo = "src/main/resources/test-goodInfo.txt";
-        goodInFo.read_GoodInfo(file_GoodInfo);
+        GoodInFo.read_GoodInfo(file_GoodInfo);
         String file_PromotionInfo = "src/main/resources/test-promotionInfo.txt";
-        promotionInFo.read_PromotionInfo(file_PromotionInfo);
-        purchaseInFo purchaseinfo=new purchaseInFo();
-        purchaseInFo.array_purchaseinfo.clear();
-        purchaseInFo.array_purchaseinfo_num.clear();
+        PromotionInFo.read_PromotionInfo(file_PromotionInfo);
+        PurchaseInFo purchaseinfo=new PurchaseInFo();
+        PurchaseInFo.array_purchaseinfo.clear();
+        PurchaseInFo.array_purchaseinfo_num.clear();
         purchaseinfo.set_Array("ITEM000000",3);
         purchaseinfo.set_Array("#", 1);
-        float result=purchaseInFo.calculate_NormalInfo();
+        float result= PurchaseInFo.calculate_NormalInfo();
         //如何保证控制格式
         Assert.assertEquals("6.0",String.valueOf(result));
     }
@@ -169,16 +169,16 @@ public class InfoTest {
     public void should_return_purchaseinfo_pro_price_three_3(){
 
         String file_GoodInfo = "src/main/resources/test-goodInfo.txt";
-        goodInFo.read_GoodInfo(file_GoodInfo);
+        GoodInFo.read_GoodInfo(file_GoodInfo);
         String file_PromotionInfo = "src/main/resources/test-promotionInfo.txt";
-        promotionInFo.read_PromotionInfo(file_PromotionInfo);
-        purchaseInFo purchaseinfo=new purchaseInFo();
-        purchaseInFo.array_purchaseinfo.clear();
-        purchaseInFo.array_purchaseinfo_num.clear();
+        PromotionInFo.read_PromotionInfo(file_PromotionInfo);
+        PurchaseInFo purchaseinfo=new PurchaseInFo();
+        PurchaseInFo.array_purchaseinfo.clear();
+        PurchaseInFo.array_purchaseinfo_num.clear();
         purchaseinfo.set_Array("ITEM000000",3);
         purchaseinfo.set_Array("#", 1);
         purchaseinfo.all_moneyCharge=0;
-        float result=purchaseInFo.calculate_PromotionInfo();
+        float result= PurchaseInFo.calculate_PromotionInfo();
         //促销产品
         Assert.assertEquals("3.0",String.valueOf(result));
     }
@@ -187,19 +187,19 @@ public class InfoTest {
     public void should_return_purchaseinfo_all_price_three_6(){
 
         String file_GoodInfo = "src/main/resources/test-goodInfo.txt";
-        goodInFo.read_GoodInfo(file_GoodInfo);
+        GoodInFo.read_GoodInfo(file_GoodInfo);
         String file_PromotionInfo = "src/main/resources/test-promotionInfo.txt";
-        promotionInFo.read_PromotionInfo(file_PromotionInfo);
-        purchaseInFo purchaseinfo=new purchaseInFo();
-        purchaseInFo.array_purchaseinfo.clear();
-        purchaseInFo.array_purchaseinfo_num.clear();
+        PromotionInFo.read_PromotionInfo(file_PromotionInfo);
+        PurchaseInFo purchaseinfo=new PurchaseInFo();
+        PurchaseInFo.array_purchaseinfo.clear();
+        PurchaseInFo.array_purchaseinfo_num.clear();
         purchaseinfo.set_Array("ITEM000000",3);
         purchaseinfo.set_Array("#", 3);
-        purchaseInFo.all_moneyCharge=0;
-        purchaseInFo.all_money=0;
-        purchaseInFo.calculate_NormalInfo();
-        purchaseInFo.calculate_PromotionInfo();
-        String result=purchaseInFo.calculate_AllInfo();
+        PurchaseInFo.all_moneyCharge=0;
+        PurchaseInFo.all_money=0;
+        PurchaseInFo.calculate_NormalInfo();
+        PurchaseInFo.calculate_PromotionInfo();
+        String result= PurchaseInFo.calculate_AllInfo();
         //非促销产品
         Assert.assertEquals("6.0",result);
     }
