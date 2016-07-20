@@ -41,6 +41,7 @@ public class InfoTest {
 
         Assert.assertEquals("ITEM000001", result[0]);
     }
+
     @Test//95折商品
     public void calculate_DiscountInfo_should_return_4(){
         PurchaseInFo purchaseinfo = new PurchaseInFo();
@@ -204,6 +205,17 @@ public class InfoTest {
         Assert.assertEquals("9.0",result);
     }
 
-   
+    @Test //判断冲突解决问题
+    public void discountInFo_should_return_1() {
+        ArrayList<String> dis = DiscountInFo.read_DiscountInfo("src/main/resources/discountInfo.txt");
+        int result=dis.size();
+        for(int i=0;i<dis.size();i++){
+            System.out.println(dis.get(i));
+        }
+        Assert.assertEquals("1", String.valueOf(result));
+    }
+    @Test //判断冲突输出问题
+    public void conflict_should_return_XX() {
 
+    }
 }

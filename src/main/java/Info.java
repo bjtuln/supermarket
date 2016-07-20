@@ -75,7 +75,7 @@ class PromotionInFo {
     }
 }
 class DiscountInFo {
-    //95折商品
+    //95折商品--该数组存是95折且不是买2增1的商品（测试 get（2）为空--即length为1）
     static ArrayList<String> array_discountinfo = new ArrayList<String>();
     /**
      * 以行为单位读取商品信息文件存储在array_goodinfo
@@ -102,6 +102,16 @@ class DiscountInFo {
                 }
             }
         }
+        for (int i=0;i<array_discountinfo.size();i++){
+            //System.out.println(PromotionInFo.array_promotioninfo.contains("ITEM000004"));
+            if (PromotionInFo.array_promotioninfo.contains(array_discountinfo.get(i).trim())){
+                array_discountinfo.remove(i);
+                //System.out.println("test");
+            }
+        }
+        /*for (int i=0;i<array_discountinfo.size();i++){
+            System.out.println("info:"+array_discountinfo.get(i));
+        }*/
         return array_discountinfo;
     }
 }
@@ -269,15 +279,18 @@ public class Info {
         //全部商品信息
         String file_GoodInfo = "src/main/resources/test-goodInfo.txt";
         GoodInFo.read_GoodInfo(file_GoodInfo);
-        for (int i = 0; i < GoodInFo.array_goodinfo.size(); i++) {
+        System.out.println("===在架商品库===");
+        for (int i = 1; i < GoodInFo.array_goodinfo.size(); i++) {
             System.out.println(GoodInFo.array_goodinfo.get(i));
         }
         //优惠商品信息
         String file_PromotionInfo = "src/main/resources/test-promotionInfo.txt";
         PromotionInFo.read_PromotionInfo(file_PromotionInfo);
+        System.out.println("===买二赠一商品库===");
         for (int i = 0; i < PromotionInFo.array_promotioninfo.size(); i++) {
             System.out.println(PromotionInFo.array_promotioninfo.get(i));
         }
+        System.out.println("===请输入客户购买商品条码===");
         ArrayList<String> dis = DiscountInFo.read_DiscountInfo("src/main/resources/discountInfo.txt");
         input_purchase();
         PurchaseInFo.calculate_NormalInfo();
