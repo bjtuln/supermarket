@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * Created by Administrator on 2016/7/18.
  */
 public class InfoTest {
-
+    ArrayList<String> array_dis = new ArrayList<String>();
     @Test //商品信息读取（从第一行算起-1）
     public void goodInFo_should_return_ITEM00000() {
         Info info = new Info();
@@ -95,7 +95,6 @@ public class InfoTest {
     }
     @Test //买二赠一计算-单独买一个正常的可乐价钱-普通
     public void should_return_purchaseinfo_com_price_one_3(){
-
         String file_GoodInfo = "src/main/resources/test-goodInfo.txt";
         GoodInFo.read_GoodInfo(file_GoodInfo);
         String file_PromotionInfo = "src/main/resources/test-promotionInfo.txt";
@@ -105,7 +104,7 @@ public class InfoTest {
         PurchaseInFo.array_purchaseinfo_num.clear();
         purchaseinfo.set_Array("ITEM000000",1);
         purchaseinfo.set_Array("#", 1);
-        float result= PurchaseInFo.calculate_NormalInfo();
+        float result= PurchaseInFo.calculate_NormalInfo(array_dis);
         //如何保证控制格式
         Assert.assertEquals("3.0",String.valueOf(result));
     }
@@ -142,7 +141,7 @@ public class InfoTest {
         purchaseinfo.set_Array("#", 1);
         PurchaseInFo.all_moneyCharge=0;
         PurchaseInFo.all_money=0;
-        PurchaseInFo.calculate_NormalInfo();
+        PurchaseInFo.calculate_NormalInfo(array_dis);
         PurchaseInFo.calculate_PromotionInfo();
         String result= PurchaseInFo.calculate_AllInfo();
         //非促销产品
@@ -161,7 +160,7 @@ public class InfoTest {
         PurchaseInFo.array_purchaseinfo_num.clear();
         purchaseinfo.set_Array("ITEM000000",3);
         purchaseinfo.set_Array("#", 1);
-        float result= PurchaseInFo.calculate_NormalInfo();
+        float result= PurchaseInFo.calculate_NormalInfo(array_dis);
         //如何保证控制格式
         Assert.assertEquals("9.0",String.valueOf(result));
     }
@@ -198,7 +197,7 @@ public class InfoTest {
         purchaseinfo.set_Array("#", 3);
         PurchaseInFo.all_moneyCharge=0;
         PurchaseInFo.all_money=0;
-        PurchaseInFo.calculate_NormalInfo();
+        PurchaseInFo.calculate_NormalInfo(array_dis);
         PurchaseInFo.calculate_PromotionInfo();
         String result= PurchaseInFo.calculate_AllInfo();
         //非促销产品
