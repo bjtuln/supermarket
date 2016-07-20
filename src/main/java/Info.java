@@ -128,30 +128,32 @@ class PurchaseInFo {
         array_purchaseinfo_num.add(b);
     }
     //计算正常商品
-    public static float calculate_NormalInfo()
+    public static float calculate_NormalInfo(ArrayList<String> dis)
     {
-        System.out.println("*<没钱赚商店>购物清单*");
-
         //去掉最后一个"#"
         for(int i=0;i<array_purchaseinfo.size()-1;i++)
         {
-            boolean ifpurchase=false;
             int num=0;
-            for(int j = 0; j< PromotionInFo.array_promotioninfo.size(); j++)
-            {
-                //如果是促销商品
-                if(array_purchaseinfo.get(i).trim().equals(PromotionInFo.array_promotioninfo.get(j).trim()))
-                    ifpurchase=true;
+            //是否为95折商品
+            boolean ifpurchase = true;
+            for(int j=0;j<dis.size();j++) {
+                if (array_purchaseinfo.get(i).trim().equals(dis.get(j).trim())) {
+                    for(int d=0; d<PromotionInFo.array_promotioninfo.size(); d++) {
+                        if (!(array_purchaseinfo.get(i).trim().equals(PromotionInFo.array_promotioninfo.get(d).trim()) && array_purchaseinfo_num.get(i) > 1)) {
+                            ifpurchase = false;
+                        }
+                        else{
+                            ifpurchase = true;
+                            break;
+                        }
+                    }
+                }
             }
             for(int k = 0; k< GoodInFo.array_goodinfo.size(); k++)
             {
                 str_goodInFo= GoodInFo.array_goodinfo.get(k).split("\\s+",6);
-                if(ifpurchase)
-                    num=array_purchaseinfo_num.get(i);
-                else {
-                    num=array_purchaseinfo_num.get(i);
-                }
-                if(array_purchaseinfo.get(i).equals(str_goodInFo[0]))
+                num=array_purchaseinfo_num.get(i);
+                if(array_purchaseinfo.get(i).equals(str_goodInFo[0]) && ifpurchase)
                 {
                     System.out.println("名称："+str_goodInFo[1]+"，数量："+array_purchaseinfo_num.get(i)+str_goodInFo[2]+"，单价："+str_goodInFo[5]+"(元)，"+"小计："+num* Float.parseFloat(str_goodInFo[5])+"(元)。");
                     all_money+=array_purchaseinfo_num.get(i)*Float.parseFloat(str_goodInFo[5]);
@@ -168,7 +170,6 @@ class PurchaseInFo {
     {
         boolean flag=true;
         //标记要不要输出买二赠一
-
         //去掉最后一个"#"
         for(int i=0;i<array_purchaseinfo.size()-1;i++)
         {
@@ -196,8 +197,6 @@ class PurchaseInFo {
                         }
                     }
                     System.out.println("节省："+all_moneyCharge+"(元)。");
-
-
                 }
             }
 
@@ -206,24 +205,35 @@ class PurchaseInFo {
     }
     //计算95折
     public static float calculate_DiscountInfo(ArrayList<String> dis){
-        float discount_sum =  0;
         for(int i=0;i<array_purchaseinfo.size()-1;i++)
         {
+            boolean ispromotion = false;
             num=array_purchaseinfo_num.get(i);
             //如果是95折产品的计算
             for(int j=0;j<dis.size();j++) {
-                if (array_purchaseinfo.get(i).trim().equals(dis.get(j).trim())) {
-                    for(int k = 0; k< GoodInFo.array_goodinfo.size(); k++) {
-                        str_goodInFo = GoodInFo.array_goodinfo.get(k).split("\\s+", 6);
-                        if (array_purchaseinfo.get(i).equals(str_goodInFo[0])) {
-                            System.out.println("名称：" + str_goodInFo[1] + "，数量：" + array_purchaseinfo_num.get(i) + str_goodInFo[2] + "，单价：" + str_goodInFo[5] + "(元)，" + "小计：" + num * Float.parseFloat(str_goodInFo[5]) * 0.95 + "(元)，" + "节省：" + num * Float.parseFloat(str_goodInFo[5]) * 0.05 + "(元)");
-                            discount_sum += num * Float.parseFloat(str_goodInFo[5]) * 0.05;
+                if (array_purchaseinfo.get(i).trim().equals(dis.get(j).trim()))
+                {
+                    for(int d=0; d<PromotionInFo.array_promotioninfo.size(); d++)
+                    {
+                        if(array_purchaseinfo.get(i).trim().equals(PromotionInFo.array_promotioninfo.get(d).trim()) && num > 1)
+                        {
+                            ispromotion = true;
+                        }
+                    }
+                    if(!ispromotion) {
+                        for (int k = 0; k < GoodInFo.array_goodinfo.size(); k++) {
+                            str_goodInFo = GoodInFo.array_goodinfo.get(k).split("\\s+", 6);
+                            if (array_purchaseinfo.get(i).equals(str_goodInFo[0])) {
+                                System.out.println("名称：" + str_goodInFo[1] + "，数量：" + array_purchaseinfo_num.get(i) + str_goodInFo[2] + "，单价：" + str_goodInFo[5] + "(元)，" + "小计：" + num * Float.parseFloat(str_goodInFo[5]) * 0.95 + "(元)，" + "节省：" + num * Float.parseFloat(str_goodInFo[5]) * 0.05 + "(元)");
+                                all_moneyCharge += num * Float.parseFloat(str_goodInFo[5]) * 0.05;
+                                all_money += num * Float.parseFloat(str_goodInFo[5]) * 0.95;
+                            }
                         }
                     }
                 }
             }
         }
-        return discount_sum;
+        return all_moneyCharge;
     }
     public static String calculate_AllInfo()
     {
@@ -293,7 +303,8 @@ public class Info {
         System.out.println("===请输入客户购买商品条码===");
         ArrayList<String> dis = DiscountInFo.read_DiscountInfo("src/main/resources/discountInfo.txt");
         input_purchase();
-        PurchaseInFo.calculate_NormalInfo();
+        System.out.println("*<没钱赚商店>购物清单*");
+        PurchaseInFo.calculate_NormalInfo(dis);
         PurchaseInFo.calculate_DiscountInfo(dis);
         PurchaseInFo.calculate_PromotionInfo();
         PurchaseInFo.calculate_AllInfo();
