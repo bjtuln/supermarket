@@ -31,7 +31,7 @@ public class InfoTest {
         Assert.assertEquals("ITEM000004", result[0]);
     }
 
-    @Test //商品优惠信息读取-买三免一
+    @Test //商品优惠信息读取-买二赠一
     public void promotionInFo_should_return_ITEM00001(){
         Info info = new Info();
         String file_promotionInfo = "src/main/resources/test-promotionInfo.txt";
@@ -57,7 +57,7 @@ public class InfoTest {
         Assert.assertEquals("4.0", String.valueOf(result));
     }
 
-    @Test //买三免一计算-单独买一个正常的可乐项目
+    @Test //买二赠一计算-单独买一个正常的可乐项目
     public void should_return_purchaseinfo_firstitem(){
 
         String file_GoodInfo = "src/main/resources/test-goodInfo.txt";
@@ -75,7 +75,7 @@ public class InfoTest {
         Assert.assertEquals("ITEM000000", result);
     }
 
-    @Test //买三免一计算-单独买一个正常的可乐个数
+    @Test //买二赠一计算-单独买一个正常的可乐个数
     public void should_return_purchaseinfo_firstnum(){
 
         String file_GoodInfo = "src/main/resources/test-goodInfo.txt";
@@ -92,7 +92,7 @@ public class InfoTest {
         int result= PurchaseInFo.array_purchaseinfo_num.get(0);
         Assert.assertEquals(1, result);
     }
-    @Test //买三免一计算-单独买一个正常的可乐价钱-普通
+    @Test //买二赠一计算-单独买一个正常的可乐价钱-普通
     public void should_return_purchaseinfo_com_price_one_3(){
 
         String file_GoodInfo = "src/main/resources/test-goodInfo.txt";
@@ -109,7 +109,7 @@ public class InfoTest {
         Assert.assertEquals("3.0",String.valueOf(result));
     }
 
-    @Test //买三免一计算-单独买一个正常的可乐价钱-促销
+    @Test //买二赠一计算-单独买一个正常的可乐优惠钱数
     public void should_return_purchaseinfo_pro_price_one_0(){
 
         String file_GoodInfo = "src/main/resources/test-goodInfo.txt";
@@ -127,7 +127,7 @@ public class InfoTest {
         Assert.assertEquals("0.0",String.valueOf(result));
     }
 
-    @Test //买三免一计算-单独买一个正常的可乐价钱-总价
+    @Test //买二赠一计算-单独买一个正常的可乐价钱-总价
     public void should_return_purchaseinfo_all_price_one_3(){
 
         String file_GoodInfo = "src/main/resources/test-goodInfo.txt";
@@ -148,8 +148,8 @@ public class InfoTest {
         Assert.assertEquals("3.0",result);
     }
 
-    @Test //买三免一计算-买3个正常的可乐价钱-普通
-    public void should_return_purchaseinfo_com_price_three_6(){
+    @Test //买二赠一计算-买3个正常的可乐价钱-普通
+    public void should_return_purchaseinfo_com_price_three_9(){
 
         String file_GoodInfo = "src/main/resources/test-goodInfo.txt";
         GoodInFo.read_GoodInfo(file_GoodInfo);
@@ -162,10 +162,10 @@ public class InfoTest {
         purchaseinfo.set_Array("#", 1);
         float result= PurchaseInFo.calculate_NormalInfo();
         //如何保证控制格式
-        Assert.assertEquals("6.0",String.valueOf(result));
+        Assert.assertEquals("9.0",String.valueOf(result));
     }
 
-    @Test //买三免一计算-买3个正常的可乐价钱-促销
+    @Test //买二赠一计算-买3个正常的可乐优惠钱数
     public void should_return_purchaseinfo_pro_price_three_3(){
 
         String file_GoodInfo = "src/main/resources/test-goodInfo.txt";
@@ -183,8 +183,8 @@ public class InfoTest {
         Assert.assertEquals("3.0",String.valueOf(result));
     }
 
-    @Test //买三免一计算-买3个正常的可乐价钱-总价
-    public void should_return_purchaseinfo_all_price_three_6(){
+    @Test //买二赠一计算-买3个正常的可乐价钱-总价
+    public void should_return_purchaseinfo_all_price_three_9(){
 
         String file_GoodInfo = "src/main/resources/test-goodInfo.txt";
         GoodInFo.read_GoodInfo(file_GoodInfo);
@@ -201,7 +201,9 @@ public class InfoTest {
         PurchaseInFo.calculate_PromotionInfo();
         String result= PurchaseInFo.calculate_AllInfo();
         //非促销产品
-        Assert.assertEquals("6.0",result);
+        Assert.assertEquals("9.0",result);
     }
+
+   
 
 }

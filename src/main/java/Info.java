@@ -44,7 +44,7 @@ class GoodInFo {
 }
 
 class PromotionInFo {
-    //存储优惠商品信息(买三免一)
+    //存储优惠商品信息(买二赠一)
     static ArrayList<String> array_promotioninfo=new ArrayList<String>();
     /**
      * 以行为单位读取商品信息文件存储在array_goodinfo
@@ -137,7 +137,7 @@ class PurchaseInFo {
             {
                 str_goodInFo= GoodInFo.array_goodinfo.get(k).split("\\s+",6);
                 if(ifpurchase)
-                    num=array_purchaseinfo_num.get(i)-array_purchaseinfo_num.get(i)/3;
+                    num=array_purchaseinfo_num.get(i);
                 else {
                     num=array_purchaseinfo_num.get(i);
                 }
@@ -157,7 +157,7 @@ class PurchaseInFo {
     public static float calculate_PromotionInfo()
     {
         boolean flag=true;
-        //标记要不要输出买三免一
+        //标记要不要输出买二赠一
 
         //去掉最后一个"#"
         for(int i=0;i<array_purchaseinfo.size()-1;i++)
@@ -169,7 +169,7 @@ class PurchaseInFo {
                 {
                     if(flag)
                     {
-                        System.out.println("买三免一商品");
+                        System.out.println("买二赠一商品");
                         flag=false;
                     }
                     for(int k = 0; k< GoodInFo.array_goodinfo.size(); k++)
@@ -180,7 +180,7 @@ class PurchaseInFo {
                         {
                             //输出后面的信息
                             float forCharge=0;
-                            forCharge=array_purchaseinfo_num.get(i)/3;
+                            forCharge=array_purchaseinfo_num.get(i)/2;
                             System.out.println("名称："+str_goodInFo[1]+"，数量："+forCharge+"。");
                             all_moneyCharge+=forCharge*Float.parseFloat(str_goodInFo[5]);
                         }
@@ -217,8 +217,8 @@ class PurchaseInFo {
     }
     public static String calculate_AllInfo()
     {
-        System.out.println("总计："+String.valueOf(all_money-all_moneyCharge)+"(元)。");
-        return String.valueOf(all_money-all_moneyCharge);
+        System.out.println("总计："+String.valueOf(all_money)+"(元)。");
+        return String.valueOf(all_money);
     }
 }
 
